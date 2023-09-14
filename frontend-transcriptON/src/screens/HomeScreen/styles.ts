@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { theme } from "../../theme";
 
 export const Container = styled.section`
-  /* max-width: ${theme.sizes.container}; */
-  margin: 0 auto;
+  width: 100%;
+   /* margin: 0 auto; 
 
-  /* display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center; 
   justify-content: center; 
-  min-height: 100vh; */
+  min-height: 100vh;  */
   h1 {
     font-size: 2.25rem;
     color: ${theme.colors.primary};
@@ -23,7 +23,7 @@ export const ButtonContainer = styled.div`
   justify-content: flex-end;
 
   margin-top: 1rem;
-
+  margin-right: 2rem;
   button {
     display: flex;
     align-items: center;
@@ -38,9 +38,6 @@ export const ButtonContainer = styled.div`
     border: none;
   }
 `;
-// export const ButtonLogout = styled.button`
-
-// `;
 
 export const ContainerFile = styled.section`
   max-width: ${theme.sizes.container};
@@ -49,7 +46,6 @@ export const ContainerFile = styled.section`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 `;
 

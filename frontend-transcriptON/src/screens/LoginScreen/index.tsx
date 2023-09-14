@@ -8,6 +8,7 @@ import { theme } from "../../theme";
 import { AuthContext } from "../../contexts/AuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
 import { login } from "../../services/authService";
+import { toast } from "react-toastify";
 
 export const LoginScreen = () => {
   const [colorUser, setColorUser] = useState<boolean>(false);
@@ -33,7 +34,7 @@ export const LoginScreen = () => {
         }
       })
       .catch((error) => {
-        alert("Invalid E-mail or Password");
+        toast.error("E-mail ou senha incorretos!");
       });
   };
 
@@ -76,10 +77,10 @@ export const LoginScreen = () => {
               <input
                 type="text"
                 placeholder="Login"
-                {...register("email")}
-                onChange={({ target }) =>
-                  target.value ? setColorUser(true) : setColorUser(false)
-                }
+                {...register("email", {
+                  onChange: ({ target }) =>
+                    target.value ? setColorUser(true) : setColorUser(false),
+                })}
               />
             </InputContainer>
           </div>
@@ -113,10 +114,12 @@ export const LoginScreen = () => {
               <input
                 type="password"
                 placeholder="Senha"
-                {...register("password")}
-                onChange={({ target }) =>
-                  target.value ? setColorPadlock(true) : setColorPadlock(false)
-                }
+                {...register("password", {
+                  onChange: ({ target }) =>
+                    target.value
+                      ? setColorPadlock(true)
+                      : setColorPadlock(false),
+                })}
               />
             </InputContainer>
           </div>

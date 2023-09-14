@@ -4,7 +4,6 @@ import { AuthContext } from "../contexts/AuthContext";
 
 export const ProtectedRoute = ({ children }: any) => {
   const { token } = useContext(AuthContext);
-  console.log(token);
 
   return token ? children : <Navigate to="/login" />;
 };

@@ -51,7 +51,7 @@ export const HomeScreen = () => {
   };
 
   const handleLogout = async () => {
-    await logout(token.replace(/["]/g, ""));
+    // await logout(token.replace(/["]/g, ""));
     localStorage.removeItem("token");
     setToken("");
     navigate("/login");
