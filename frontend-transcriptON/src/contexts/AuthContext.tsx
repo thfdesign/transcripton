@@ -5,8 +5,8 @@ import {
   FieldValues,
   UseFormRegister,
   UseFormReset,
+  SubmitHandler,
 } from "react-hook-form";
-import axios, { AxiosResponse } from "axios";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
@@ -15,10 +15,10 @@ interface IProps {
 }
 
 interface AuthProps {
-  handleSubmit: UseFormHandleSubmit<FieldValues>;
+  handleSubmit?: UseFormHandleSubmit<FieldValues, any>;
   register: UseFormRegister<FieldValues>;
   token: string;
-  setToken: (item: any) => any;
+  setToken: (item: string) => void;
   reset: UseFormReset<FieldValues>;
 }
 

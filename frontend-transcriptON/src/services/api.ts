@@ -1,7 +1,7 @@
-import axios from "axios"
-import { IWordSpelling } from "../interfaces/wordInterfaces"
-const APIKey = "936103147cc34f4e9a3a465672905a4d"
-const refreshInterval = 5000
+import axios from "axios";
+import { IWordSpelling } from "../interfaces/wordInterfaces";
+const APIKey = "936103147cc34f4e9a3a465672905a4d";
+const refreshInterval = 5000;
 
 const assembly = axios.create({
   baseURL: "https://api.assemblyai.com/v2",
@@ -9,9 +9,13 @@ const assembly = axios.create({
     authorization: APIKey,
     "content-type": "application/json",
   },
-})
+});
 
-export const getTranscript = async (wordList: IWordSpelling[], audioURL: string, callback: any) => {
+export const getTranscript = async (
+  wordList: IWordSpelling[],
+  audioURL: string,
+  callback: any
+) => {
   let adaptedWordList = [];
 
   for (let x = 0; x < wordList.length; x++) {
@@ -21,27 +25,24 @@ export const getTranscript = async (wordList: IWordSpelling[], audioURL: string,
     });
   }
 
-
   const response = await assembly.post("/transcript", {
     audio_url: audioURL,
     language_code: "pt",
     disfluencies: false,
     punctuate: true,
     format_text: true,
-    custom_spelling: adaptedWordList
-  })
+    custom_spelling: adaptedWordList,
+  });
 
   const checkCompletionInterval = setInterval(async () => {
-
-    const transcript = await assembly.get(`/transcript/${response.data.id}`)
-    const transcriptStatus = transcript.data.status
+    const transcript = await assembly.get(`/transcript/${response.data.id}`);
+    const transcriptStatus = transcript.data.status;
 
     if (transcriptStatus === "completed") {
-      let transcriptText = transcript.data.text
-      clearInterval(checkCompletionInterval)
-      callback(transcriptText)
-
+      let transcriptText = transcript.data.text;
+      clearInterval(checkCompletionInterval);
+      callback(transcriptText);
     } else {
     }
-  }, refreshInterval)
-}
+  }, refreshInterval);
+};
