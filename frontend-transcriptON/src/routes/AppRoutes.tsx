@@ -6,9 +6,7 @@ import { InteligenceScreen } from "../screens/InteligenceScreen";
 import { LoadingScreen } from "../screens/LoadingScreen";
 import { ResultScreen } from "../screens/ResultScreen";
 import { LoginScreen } from "../screens/LoginScreen";
-import { TextEditor } from "../screens/Edit";
 import { ProtectedRoute } from "../helper/ProtectedRoute";
-import { UploadScreen } from "../screens/UploadScreen";
 
 export const AppRoutes = () => {
   return (

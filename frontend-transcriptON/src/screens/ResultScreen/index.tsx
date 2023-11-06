@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Container } from "../HomeScreen/styles";
+import { Container, InfoContainer } from "../HomeScreen/styles";
 import { IoIosReturnLeft } from "react-icons/io";
 import { theme } from "../../theme";
 import { Actions, AudioContainer} from "./styles";
@@ -43,7 +43,12 @@ export const ResultScreen = () => {
 
       <div style={{ maxWidth: "1120px", margin: "auto" }}>
         <Container>
-          <h1 style={{marginBottom: '0'}}>Aqui está o resultado da sua transcrição:</h1>
+        <InfoContainer style={{marginBottom: 0}}>
+            <h1>Aqui está o resultado da sua transcrição!</h1>
+            <p>
+            Após editar sua transcrição, copie e cole todo o texto em um arquivo do Word.
+            </p>
+          </InfoContainer>
 
           <AudioContainer>
             <ReactAudioPlayer
