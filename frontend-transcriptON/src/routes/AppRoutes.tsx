@@ -7,8 +7,8 @@ import { LoadingScreen } from "../screens/LoadingScreen";
 import { ResultScreen } from "../screens/ResultScreen";
 import { LoginScreen } from "../screens/LoginScreen";
 import { TextEditor } from "../screens/Edit";
-import { PlayerAudio } from "../screens/PlayerAudio";
 import { ProtectedRoute } from "../helper/ProtectedRoute";
+import { UploadScreen } from "../screens/UploadScreen";
 
 export const AppRoutes = () => {
   return (
@@ -22,8 +22,6 @@ export const AppRoutes = () => {
             </ProtectedRoute>
           }
         ></Route>
-        <Route path="/edit" element={<TextEditor />}></Route>
-        <Route path="/playeraudio" element={<PlayerAudio />}></Route>
         <Route path="/login" element={<LoginScreen />}></Route>
         <Route path="/intelligence" element={<InteligenceScreen />}></Route>
         <Route path="/result" element={<ResultScreen />}></Route>

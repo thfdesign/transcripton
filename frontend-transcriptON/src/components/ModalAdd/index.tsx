@@ -17,6 +17,7 @@ import { SecondaryButton } from "../SecondaryButton";
 import { theme } from "../../theme";
 import { createWord, getAllWords } from "../../services/backendService";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const ModalAdd = () => {
   const { isModalAddActive, changeModalAddState, updateWordList, wordList} = useContext(AppContext);

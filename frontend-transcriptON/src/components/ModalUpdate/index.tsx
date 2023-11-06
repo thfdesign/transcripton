@@ -18,6 +18,7 @@ import { theme } from "../../theme";
 import { createWord, getAllWords, getOneWord, updateWord } from "../../services/backendService";
 import { toast } from "react-toastify";
 import { IWordSpelling } from "../../interfaces/wordInterfaces";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const ModalUpdate = () => {
   const { isModalUpdateActive, changeModalUpdateState, updateWordList, wordId } = useContext(AppContext);

@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Container } from "../HomeScreen/styles";
-import { FiCopy } from "react-icons/fi";
 import { IoIosReturnLeft } from "react-icons/io";
 import { theme } from "../../theme";
-import { Actions, Result, TooltipArea } from "./styles";
+import { Actions, AudioContainer} from "./styles";
 import { SecondaryButton } from "../../components/SecondaryButton";
 import { AppContext } from "../../contexts/AppContext";
-import { Tooltip } from "../../components/Tooltip";
 import { useNavigate } from "react-router-dom";
 import { Sidebar } from "../../components/Sidebar";
+import JoditEditor from "jodit-react";
+import ReactAudioPlayer from "react-audio-player";
 
 export const ResultScreen = () => {
   const { transcriptedText, changeNavStep } = useContext(AppContext);
@@ -26,46 +26,55 @@ export const ResultScreen = () => {
     changeNavStep(3);
   }, [copied]);
 
-  const copyText = () => {
-    setCopied(true);
+  const [content, setContent] = useState(transcriptedText);
 
-    //    navigator.clipboard.writeText(okss);
+  const config = {
+    readonly: false,
+  };
+
+  const handleUpdate = ({ target }: any) => {
+    const editorContet = target.value;
+    setContent(editorContet);
   };
 
   return (
     <>
       <Sidebar />
 
-      <Container>
-        <h1>Aqui está o resultado da sua transcrição:</h1>
-        <Result>
-          {transcriptedText !== "" && (
-            <p>{transcriptedText.split("@").join("-")}</p>
-          )}
-        </Result>
+      <div style={{ maxWidth: "1120px", margin: "auto" }}>
+        <Container>
+          <h1 style={{marginBottom: '0'}}>Aqui está o resultado da sua transcrição:</h1>
 
-        <Actions>
-          <SecondaryButton
-            onClick={() => {
-              navigate("/");
-            }}
-            icon={<IoIosReturnLeft size={25} color={theme.colors.tertiary} />}
-          >
-            Nova transcrição
-          </SecondaryButton>
+          <AudioContainer>
+            <ReactAudioPlayer
+              src={
+                "https://nambbu.com.br/wp-content/uploads/2022/09/Espera-Telefonica-Atendimento-Eletronico-de-Voz..mp3"
+              }
+              controls
+            />
+          </AudioContainer>
 
-          <TooltipArea>
-            <Tooltip isActive={copied} label="Copiado!" />
+          <div style={{ marginBottom: "4rem"}}>
+            <JoditEditor
+              value={content}
+              config={config}
+              onBlur={handleUpdate}
+              onChange={(newContent) => {}}
+            />
+          </div>
 
+          <Actions>
             <SecondaryButton
-              onClick={copyText}
-              icon={<FiCopy size={25} color={theme.colors.tertiary} />}
+              onClick={() => {
+                navigate("/");
+              }}
+              icon={<IoIosReturnLeft size={25} color={theme.colors.tertiary} />}
             >
-              Copiar
+              Nova transcrição
             </SecondaryButton>
-          </TooltipArea>
-        </Actions>
-      </Container>
+          </Actions>
+        </Container>
+      </div>
     </>
   );
 };

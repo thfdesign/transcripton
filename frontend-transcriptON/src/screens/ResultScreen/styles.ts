@@ -23,7 +23,7 @@ export const Actions = styled.div`
   width: 100%;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 
 `
@@ -34,4 +34,12 @@ export const TooltipArea = styled.div`
   align-items: center;
 
   position: relative;
+`
+
+export const AudioContainer = styled.div`
+  margin-bottom: 2rem;
+  
+  audio{
+    width: 100%;
+  }
 `

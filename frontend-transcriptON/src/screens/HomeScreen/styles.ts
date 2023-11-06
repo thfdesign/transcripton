@@ -5,11 +5,14 @@ export const Container = styled.section`
   width: 100%;
    /* margin: 0 auto; 
 
-  display: flex;
+  
+*/
+display: flex;
   flex-direction: column;
   align-items: center; 
   justify-content: center; 
-  min-height: 100vh;  */
+
+ min-height: 100vh;
   h1 {
     font-size: 2.25rem;
     color: ${theme.colors.primary};

@@ -6,6 +6,7 @@ import { ModalContent } from "./styles";
 import { FaTrash } from "react-icons/fa";
 import { deleteWord } from "../../services/backendService";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export const ModalDelete = () => {
   const {
@@ -14,6 +15,7 @@ export const ModalDelete = () => {
     wordId,
     updateWordList,
   } = useContext(AppContext);
+
 
   const customStyles = {
     content: {

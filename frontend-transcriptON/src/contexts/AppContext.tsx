@@ -1,6 +1,7 @@
-import React, { createContext, useCallback, useEffect, useState } from "react";
+import React, { createContext, useCallback, useEffect, useState, useContext } from "react";
 import { IWordSpelling } from "../interfaces/wordInterfaces";
 import { getAllWords } from "../services/backendService";
+import { AuthContext } from "./AuthContext";
 
 interface IProps {
   children: React.ReactNode;
